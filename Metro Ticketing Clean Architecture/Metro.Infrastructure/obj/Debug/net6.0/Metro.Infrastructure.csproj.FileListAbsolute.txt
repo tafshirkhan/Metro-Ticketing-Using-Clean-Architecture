@@ -1,0 +1,12 @@
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Infrastructure.deps.json
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Infrastructure.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Infrastructure.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.csproj.AssemblyReference.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.AssemblyInfoInputs.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.AssemblyInfo.cs
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\refint\Metro.Infrastructure.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\ref\Metro.Infrastructure.dll

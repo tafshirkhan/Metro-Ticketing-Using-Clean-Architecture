@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "E+OZI97KkUNQP5Nrz+uRvhYaZrl3yqdcHGOWekRThsEDB/Ydoj8N/rfIxpKmEw6NW13ODz+JeeHNPGP1WWQ7gw==",
+  "success": true,
+  "projectFilePath": "E:\\Metro Ticketing Using Clean Architecture\\Metro-Ticketing-Using-Clean-Architecture\\Metro Ticketing Clean Architecture\\Shared\\Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tafsir\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\Tafsir\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Tafsir\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 12.1.1 was resolved.",
+      "libraryId": "MediatR",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}

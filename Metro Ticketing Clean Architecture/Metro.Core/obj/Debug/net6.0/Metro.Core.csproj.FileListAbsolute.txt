@@ -1,0 +1,12 @@
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\bin\Debug\net6.0\Metro.Core.deps.json
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\bin\Debug\net6.0\Metro.Core.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\bin\Debug\net6.0\Metro.Core.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.csproj.AssemblyReference.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.AssemblyInfoInputs.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.AssemblyInfo.cs
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.csproj.CoreCompileInputs.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\refint\Metro.Core.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\Metro.Core.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Core\obj\Debug\net6.0\ref\Metro.Core.dll

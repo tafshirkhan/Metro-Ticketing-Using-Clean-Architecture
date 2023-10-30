@@ -96,7 +96,10 @@ Install below nuget packages:
 # Working with Metro.Core:
 
 Under Metro.Core create a new folder as #Entities.
-Under #Entities create a folder as #Base which will contains the BaseEntity.cs class:
+Under #Entities create a folder as #Base which will contains the 
+BaseEntity.cs class:
+**BaseEntity.cs**
+
 public class BaseEntity<TKey> where TKey : struct
 {
         public TKey Id { get; set; }
@@ -124,7 +127,9 @@ Under #Shared create two folder as #Commands & #DTOs
 Under #DTOs folder create your required folder for you business entities class:
 First create a folder as #Base:
 Under #Base folder create a class as
-#BaseGetResponseDTO.cs:
+
+**#BaseGetResponseDTO.cs:**
+
 namespace Shared.DTOs
 {
         public record BaseGetResponseDTO<TKey> where TKey : struct
@@ -133,7 +138,9 @@ namespace Shared.DTOs
         }
 }
 &
-#BasePostResponseDTO.cs:
+
+**#BasePostResponseDTO.cs:**
+
 namespace Shared.DTOs
 {
         public record BasePostResponseDTO<TKey, TEntity>
@@ -172,7 +179,9 @@ Under #Commands folder create your required folder for you business entities cla
 As we will use #dapper so first we will need to create #dapper repositories and data acces.
 For this create a new folder as #Configs under Infrastructure layer.
 Under #Configs create two classes as:
-#ConnectionString.cs:
+
+**#ConnectionString.cs:**
+
 namespace Metro.Infrastructure.Configs
 {
         public class ConnectionString
@@ -181,7 +190,9 @@ namespace Metro.Infrastructure.Configs
         }
 }
 AND
-#MetroSettings.cs:
+
+**#MetroSettings.cs:**
+
 namespace Metro.Infrastructure.Configs;
 public class MetroSettings
 {
@@ -192,7 +203,8 @@ Next under Infrastructure layer create a new folder as #Persistence:
 Next Persistence folder create a another folder as #EfConfiguration:
 Under EfConfiguration create a class as
 
-BaseTypeConfiguration.cs:
+**BaseTypeConfiguration.cs:**
+
 using Metro.Core.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -213,7 +225,9 @@ namespace Metro.Infrastructure.Persistence.EfConfiguration
 }
 
 Next step under Persistence folder create a new class as,
-DbConnector.cs:
+
+**DbConnector.cs:**
+
 using Metro.Infrastructure.Configs;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -242,7 +256,9 @@ namespace Metro.Infrastructure.Persistence
 }
 
 Next step under Persistence folder create a new class as,
-MetroDbContext.cs:
+
+**MetroDbContext.cs:**
+
 using metros = Metro.Core.Entities.metro;
 using Microsoft.EntityFrameworkCore;
 using Metro.Core.Entities.metro;
@@ -285,7 +301,9 @@ public class MetroDbContext : DbContext
         }
 
 Next step under Persistence folder create a new class as,
-DbFactory.cs:
+
+**DbFactory.cs:**
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Metro.Infrastructure.Persistence

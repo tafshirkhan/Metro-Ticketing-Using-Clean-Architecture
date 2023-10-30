@@ -13,8 +13,6 @@ namespace Metro.Core.Entities.metro
     public class Booking : BaseEntity<Guid>
     {
         [Required]
-        public Guid BookingId { get; set; }
-        [Required]
         [Column(TypeName = "Date")]
         public DateTime Date { get; set; }
         public string Status { get; set; }
@@ -24,6 +22,8 @@ namespace Metro.Core.Entities.metro
         public virtual Train Train { get; set; }
         [ForeignKey("PassengerId")]
         public virtual Passenger Passenger { get; set; }
+        [ForeignKey("SeatId")]
+        public virtual Seat Seat { get; set; }
 
     }
 }

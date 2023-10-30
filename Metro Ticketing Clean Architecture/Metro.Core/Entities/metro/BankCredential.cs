@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace Metro.Core.Entities.metro
 {
-    [Table("Passenger", Schema = "metro")]
-    public class Passenger : BaseEntity<Guid>
+    [Table("BankCredential", Schema = "metro")]
+    public class BankCredential : BaseEntity<Guid>
     {
         [Required]
         [MaxLength(30)]
-        public string PassengerName { get; set; }
+        public string BankName { get; set; }
         [Required]
-        public int Age { get; set; }
-        [Required]
-        [MaxLength(10)]
-        public string Gender { get; set; }
+        [MaxLength(17)]
+        public string CardNumber { get; set; }
+        public bool isActive { get; set; }
     }
 }

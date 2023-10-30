@@ -1,4 +1,5 @@
 ﻿using Metro.Core.Entities.Base;
+using Metro.Core.Entities.metro;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,19 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metro.Core.Entities.metro
+namespace Metro.Core.Entities.external
 {
-    [Table("TicketDetails", Schema = "metro")]
     public class TicketDetails : BaseEntity<Guid>
     {
-        [ForeignKey("BookingId")]
         public virtual Booking Booking { get; set; }
-        [ForeignKey("TrainId")]
         public virtual Train Train { get; set; }
-        [ForeignKey("PassengerId")]
         public virtual Passenger Passenger { get; set; }
         public string Status { get; set; }
-
         public string SeatNumber { get; set; }
 
     }

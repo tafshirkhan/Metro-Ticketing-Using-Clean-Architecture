@@ -14,8 +14,6 @@ namespace Metro.Core.Entities.metro
     public class Train : BaseEntity<Guid>
     {
         [Required]
-        public Guid TrainId { get; set; }
-        [Required]
         [MaxLength(30)]
         public string Name { get; set; }
         [Required]

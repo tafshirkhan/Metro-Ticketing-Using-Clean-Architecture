@@ -12,9 +12,6 @@ namespace Metro.Core.Entities.metro
     [Table("Seat", Schema = "metro")]
     public class Seat : BaseEntity<Guid>
     {
-        [Required]
-        public Guid SeatId { get; set; }
-
         [ForeignKey("TrainId")]
         public virtual Train Train { get; set; }
         [Required]

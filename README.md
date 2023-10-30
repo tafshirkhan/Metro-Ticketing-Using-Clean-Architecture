@@ -32,8 +32,10 @@ Add Project References:
 #Metro.Application:
 =>Metro.Core.
 =>Shared.
+
 #Metro.Infrastructure:
 =>Metro.Application.
+
 #Metro.API:
 =>Metro.Application.
 =>Metro.Infrastructure.
@@ -97,15 +99,15 @@ Under Metro.Core create a new folder as #Entities.
 Under #Entities create a folder as #Base which will contains the BaseEntity.cs class:
 public class BaseEntity<TKey> where TKey : struct
 {
-public TKey Id { get; set; }
-public Guid CreatedBy { get; set; }
-public DateTime CreatedDate { get; set; } = DateTime.Now;
-public string AuthorizeStatus { get; set; } = "U";
-public bool IsDeleted { get; set; } = false;
-public Guid? AuthorizedBy { get; set; }
-public DateTime? AuthorizedDate { get; set; }
-public Guid? LastModifiedBy { get; set; }
-public DateTime? LastModifiedDate { get; set; }
+        public TKey Id { get; set; }
+        public Guid CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public string AuthorizeStatus { get; set; } = "U";
+        public bool IsDeleted { get; set; } = false;
+        public Guid? AuthorizedBy { get; set; }
+        public DateTime? AuthorizedDate { get; set; }
+        public Guid? LastModifiedBy { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
 }
 
 Under #Entities create a another folder as #metro which will contains all the required classes for our business.
@@ -125,24 +127,24 @@ Under #Base folder create a class as
 #BaseGetResponseDTO.cs:
 namespace Shared.DTOs
 {
-public record BaseGetResponseDTO<TKey> where TKey : struct
-{
-public TKey Id { get; set; }
-}
+        public record BaseGetResponseDTO<TKey> where TKey : struct
+        {
+                public TKey Id { get; set; }
+        }
 }
 &
 #BasePostResponseDTO.cs:
 namespace Shared.DTOs
 {
-public record BasePostResponseDTO<TKey, TEntity>
-where TKey : struct
-where TEntity : class
-{
-public TKey Id { get; set; }
-public bool Success { get; set; }
-public string Message { get; set; }
-public TEntity? Entity { get; set; }
-}
+        public record BasePostResponseDTO<TKey, TEntity>
+        where TKey : struct
+        where TEntity : class
+        {
+                public TKey Id { get; set; }
+                public bool Success { get; set; }
+                public string Message { get; set; }
+                public TEntity? Entity { get; set; }
+        }
 }
 
 Now next setp by step create you required folders based on the business entities and for those entity class create those classes such as:
@@ -173,17 +175,17 @@ Under #Configs create two classes as:
 #ConnectionString.cs:
 namespace Metro.Infrastructure.Configs
 {
-public class ConnectionString
-{
-public string MetroDbConnection { get; set; }
-}
+        public class ConnectionString
+        {
+                public string MetroDbConnection { get; set; }
+        }
 }
 AND
 #MetroSettings.cs:
 namespace Metro.Infrastructure.Configs;
 public class MetroSettings
 {
-public ConnectionString? ConnectionString { get; set; }
+        public ConnectionString? ConnectionString { get; set; }
 }
 
 Next under Infrastructure layer create a new folder as #Persistence:
@@ -197,17 +199,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Metro.Infrastructure.Persistence.EfConfiguration
 {
-public class BaseTypeConfiguration<TItem> : IEntityTypeConfiguration<TItem> where TItem : BaseEntity<Guid>
-{
-public virtual void Configure(EntityTypeBuilder<TItem> builder)
-{
-builder.HasKey(x => x.Id);
-builder.Property(x => x.AuthorizeStatus).HasMaxLength(5);
-builder.Property(x => x.AuthorizedBy).HasMaxLength(100);
-builder.Property(x => x.CreatedBy).HasMaxLength(100);
-builder.Property(x => x.LastModifiedBy).HasMaxLength(100);
-}
-}
+        public class BaseTypeConfiguration<TItem> : IEntityTypeConfiguration<TItem> where TItem : BaseEntity<Guid>
+        {
+                public virtual void Configure(EntityTypeBuilder<TItem> builder)
+                {
+                        builder.HasKey(x => x.Id);
+                        builder.Property(x => x.AuthorizeStatus).HasMaxLength(5);
+                        builder.Property(x => x.AuthorizedBy).HasMaxLength(100);
+                        builder.Property(x => x.CreatedBy).HasMaxLength(100);
+                        builder.Property(x => x.LastModifiedBy).HasMaxLength(100);
+                }
+        }
 }
 
 Next step under Persistence folder create a new class as,
@@ -220,22 +222,22 @@ using System.Data;
 
 namespace Metro.Infrastructure.Persistence
 {
-public class DbConnector
-{
-private readonly IConfiguration \_configuration;
-private readonly MetroSettings \_settings;
-protected DbConnector(IConfiguration configuration, IOptions<MetroSettings> settings)
-{
-\_configuration = configuration;
-\_settings = settings.Value;
-}
-
-        public IDbConnection CreateConnection()
+        public class DbConnector
         {
-            string _connectionString = _settings.ConnectionString.MetroDbConnection;
-            return new SqlConnection(_connectionString);
+                private readonly IConfiguration \_configuration;
+                private readonly MetroSettings \_settings;
+                        protected DbConnector(IConfiguration configuration, IOptions<MetroSettings> settings)
+                        {
+                                \_configuration = configuration;
+                                \_settings = settings.Value;
+                        }
+                
+                        public IDbConnection CreateConnection()
+                        {
+                            string _connectionString = _settings.ConnectionString.MetroDbConnection;
+                            return new SqlConnection(_connectionString);
+                        }
         }
-    }
 
 }
 
@@ -250,37 +252,37 @@ namespace Metro.Infrastructure.Persistence
 {
 public class MetroDbContext : DbContext
 {
-public MetroDbContext(DbContextOptions<MetroDbContext> options) : base(options)
-{
-
-        }
-        //tables
-        public DbSet<metros.Train> Trains { get; set; } = null;
-        public DbSet<metros.Ticket> Tickets { get; set; } = null;
-        public DbSet<metros.Seat> Seats { get; set; } = null;
-        public DbSet<metros.Passenger> Passengers { get; set; } = null;
-        public DbSet<metros.Booking> Bookings { get; set; } = null;
-        public DbSet<metros.Transaction> Transactions { get; set; } = null;
-        public DbSet<metros.BankCredential> BankCredentials { get; set; } = null;
-        public DbSet<metros.User> Users { get; set; } = null;
-
-
-        protected override void OnModelCreating(ModelBuilder builder)
+        public MetroDbContext(DbContextOptions<MetroDbContext> options) : base(options)
         {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-            var cascadeFKs = builder.Model.GetEntityTypes()
-                .SelectMany(t => t.GetForeignKeys())
-                .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
-
-            foreach(var fk in cascadeFKs)
-                fk.DeleteBehavior = DeleteBehavior.ClientNoAction;
-
-            base.OnModelCreating(builder);
+        
+                }
+                //tables
+                public DbSet<metros.Train> Trains { get; set; } = null;
+                public DbSet<metros.Ticket> Tickets { get; set; } = null;
+                public DbSet<metros.Seat> Seats { get; set; } = null;
+                public DbSet<metros.Passenger> Passengers { get; set; } = null;
+                public DbSet<metros.Booking> Bookings { get; set; } = null;
+                public DbSet<metros.Transaction> Transactions { get; set; } = null;
+                public DbSet<metros.BankCredential> BankCredentials { get; set; } = null;
+                public DbSet<metros.User> Users { get; set; } = null;
+        
+        
+                protected override void OnModelCreating(ModelBuilder builder)
+                {
+                    builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
+                    var cascadeFKs = builder.Model.GetEntityTypes()
+                        .SelectMany(t => t.GetForeignKeys())
+                        .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+        
+                    foreach(var fk in cascadeFKs)
+                        fk.DeleteBehavior = DeleteBehavior.ClientNoAction;
+        
+                    base.OnModelCreating(builder);
+                }
+            }
+        
         }
-    }
-
-}
 
 Next step under Persistence folder create a new class as,
 DbFactory.cs:

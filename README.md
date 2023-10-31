@@ -96,21 +96,21 @@ Install below nuget packages:
 # Working with Metro.Core:
 
 Under Metro.Core create a new folder as #Entities.
-Under #Entities create a folder as #Base which will contains the 
+Under #Entities create a folder as #Base which will contains the
 BaseEntity.cs class:
 **BaseEntity.cs**
 
 public class BaseEntity<TKey> where TKey : struct
 {
-        public TKey Id { get; set; }
-        public Guid CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public string AuthorizeStatus { get; set; } = "U";
-        public bool IsDeleted { get; set; } = false;
-        public Guid? AuthorizedBy { get; set; }
-        public DateTime? AuthorizedDate { get; set; }
-        public Guid? LastModifiedBy { get; set; }
-        public DateTime? LastModifiedDate { get; set; }
+public TKey Id { get; set; }
+public Guid CreatedBy { get; set; }
+public DateTime CreatedDate { get; set; } = DateTime.Now;
+public string AuthorizeStatus { get; set; } = "U";
+public bool IsDeleted { get; set; } = false;
+public Guid? AuthorizedBy { get; set; }
+public DateTime? AuthorizedDate { get; set; }
+public Guid? LastModifiedBy { get; set; }
+public DateTime? LastModifiedDate { get; set; }
 }
 
 Under #Entities create a another folder as #metro which will contains all the required classes for our business.
@@ -132,10 +132,10 @@ Under #Base folder create a class as
 
 namespace Shared.DTOs
 {
-        public record BaseGetResponseDTO<TKey> where TKey : struct
-        {
-                public TKey Id { get; set; }
-        }
+public record BaseGetResponseDTO<TKey> where TKey : struct
+{
+public TKey Id { get; set; }
+}
 }
 &
 
@@ -143,15 +143,15 @@ namespace Shared.DTOs
 
 namespace Shared.DTOs
 {
-        public record BasePostResponseDTO<TKey, TEntity>
-        where TKey : struct
-        where TEntity : class
-        {
-                public TKey Id { get; set; }
-                public bool Success { get; set; }
-                public string Message { get; set; }
-                public TEntity? Entity { get; set; }
-        }
+public record BasePostResponseDTO<TKey, TEntity>
+where TKey : struct
+where TEntity : class
+{
+public TKey Id { get; set; }
+public bool Success { get; set; }
+public string Message { get; set; }
+public TEntity? Entity { get; set; }
+}
 }
 
 Now next setp by step create you required folders based on the business entities and for those entity class create those classes such as:
@@ -184,10 +184,10 @@ Under #Configs create two classes as:
 
 namespace Metro.Infrastructure.Configs
 {
-        public class ConnectionString
-        {
-                public string MetroDbConnection { get; set; }
-        }
+public class ConnectionString
+{
+public string MetroDbConnection { get; set; }
+}
 }
 AND
 
@@ -196,7 +196,7 @@ AND
 namespace Metro.Infrastructure.Configs;
 public class MetroSettings
 {
-        public ConnectionString? ConnectionString { get; set; }
+public ConnectionString? ConnectionString { get; set; }
 }
 
 Next under Infrastructure layer create a new folder as #Persistence:
@@ -211,17 +211,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Metro.Infrastructure.Persistence.EfConfiguration
 {
-        public class BaseTypeConfiguration<TItem> : IEntityTypeConfiguration<TItem> where TItem : BaseEntity<Guid>
-        {
-                public virtual void Configure(EntityTypeBuilder<TItem> builder)
-                {
-                        builder.HasKey(x => x.Id);
-                        builder.Property(x => x.AuthorizeStatus).HasMaxLength(5);
-                        builder.Property(x => x.AuthorizedBy).HasMaxLength(100);
-                        builder.Property(x => x.CreatedBy).HasMaxLength(100);
-                        builder.Property(x => x.LastModifiedBy).HasMaxLength(100);
-                }
-        }
+public class BaseTypeConfiguration<TItem> : IEntityTypeConfiguration<TItem> where TItem : BaseEntity<Guid>
+{
+public virtual void Configure(EntityTypeBuilder<TItem> builder)
+{
+builder.HasKey(x => x.Id);
+builder.Property(x => x.AuthorizeStatus).HasMaxLength(5);
+builder.Property(x => x.AuthorizedBy).HasMaxLength(100);
+builder.Property(x => x.CreatedBy).HasMaxLength(100);
+builder.Property(x => x.LastModifiedBy).HasMaxLength(100);
+}
+}
 }
 
 Next step under Persistence folder create a new class as,
@@ -236,16 +236,16 @@ using System.Data;
 
 namespace Metro.Infrastructure.Persistence
 {
-        public class DbConnector
-        {
-                private readonly IConfiguration \_configuration;
-                private readonly MetroSettings \_settings;
-                        protected DbConnector(IConfiguration configuration, IOptions<MetroSettings> settings)
-                        {
-                                \_configuration = configuration;
-                                \_settings = settings.Value;
-                        }
-                
+public class DbConnector
+{
+private readonly IConfiguration \_configuration;
+private readonly MetroSettings \_settings;
+protected DbConnector(IConfiguration configuration, IOptions<MetroSettings> settings)
+{
+\_configuration = configuration;
+\_settings = settings.Value;
+}
+
                         public IDbConnection CreateConnection()
                         {
                             string _connectionString = _settings.ConnectionString.MetroDbConnection;
@@ -268,9 +268,9 @@ namespace Metro.Infrastructure.Persistence
 {
 public class MetroDbContext : DbContext
 {
-        public MetroDbContext(DbContextOptions<MetroDbContext> options) : base(options)
-        {
-        
+public MetroDbContext(DbContextOptions<MetroDbContext> options) : base(options)
+{
+
                 }
                 //tables
                 public DbSet<metros.Train> Trains { get; set; } = null;
@@ -281,23 +281,23 @@ public class MetroDbContext : DbContext
                 public DbSet<metros.Transaction> Transactions { get; set; } = null;
                 public DbSet<metros.BankCredential> BankCredentials { get; set; } = null;
                 public DbSet<metros.User> Users { get; set; } = null;
-        
-        
+
+
                 protected override void OnModelCreating(ModelBuilder builder)
                 {
                     builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
+
                     var cascadeFKs = builder.Model.GetEntityTypes()
                         .SelectMany(t => t.GetForeignKeys())
                         .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
-        
+
                     foreach(var fk in cascadeFKs)
                         fk.DeleteBehavior = DeleteBehavior.ClientNoAction;
-        
+
                     base.OnModelCreating(builder);
                 }
             }
-        
+
         }
 
 Next step under Persistence folder create a new class as,
@@ -328,6 +328,239 @@ private DbContext \_dbContext;
         }
     }
 
+}
+Next step under Infrastructure layer create a new folder as #Repository;
+Under #Repository folder create two new folder as #Command & #Query.
+
+Under #Command folder create an another folder as #Base.
+Under #Base folder create a class as:
+
+CommadRepository.cs:
+
+Before implementing this CommadRepository.cs class let's first do some works into #Metro.Application layer
+
+Into the #Contracts folder of #Metro.Application layer create a new folder as #Repositories.
+Under Repositories create two new folders as #Command & #Query.
+Under #Command create a another folder as #Base and Base create a new interface as,
+
+ICommandRepository.cs:
+
+using System.Linq.Expressions;
+
+namespace Metro.Application.Contracts.Repositories.Command.Base
+{
+public interface ICommandRepository<TEntity> where TEntity : class
+{
+/// <summary>
+/// Insert data using EF
+/// </summary>
+/// <param name="entity"></param>
+/// <returns></returns>
+Task<TEntity> InsertAsync(TEntity entity);
+/// <summary>
+/// Insert multiple data using EF
+/// </summary>
+/// <param name="entity"></param>
+/// <returns></returns>
+Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entity);
+/// <summary>
+/// Update data using EF
+/// </summary>
+/// <param name="entity"></param>
+/// <returns></returns>
+Task<TEntity> UpdateAsync(TEntity entity);
+/// <summary>
+/// Update Multiple data using EF
+/// </summary>
+/// <param name="entity"></param>
+/// <returns></returns>
+Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entity);
+/// <summary>
+/// Delete data using EF
+/// </summary>
+/// <param name="entity"></param>
+/// <returns></returns>
+Task DeleteAsync(TEntity entity);
+/// <summary>
+/// Delete multiple data using EF
+/// </summary>
+/// <param name="entity"></param>
+/// <returns></returns>
+Task DeleteAsync(IEnumerable<TEntity> entity);
+
+        Task<TEntity> DeleteAsync(object id);
+        /// <summary>
+        /// Get data using EF
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<TEntity> GetAsync(object id);
+        // <summary>
+        /// Get data using EF
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        Task<IEnumerable<TEntity>> FindAsync<T>(Expression<Func<TEntity, bool>> predicate) where T : class;
+    }
+
+}
+
+Next under #Command folder create your required Interface for your business entities such as,
+
+ITrainCommandRepository.cs:
+
+using Metro.Application.Contracts.Repositories.Command.Base;
+using Metro.Core.Entities.metro;
+
+namespace Metro.Application.Contracts.Repositories.Command
+{
+public interface ITrainCommandRepository : ICommandRepository<Train>
+{
+}
+}
+
+Also do the same things into #Query folder.
+Under #Query folder create a new folde as #Base.
+Under Base create a new Interface as.
+
+IQueryRepository.cs:
+
+AND
+
+IMultipleResultQueryRepository.cs:
+
+Next under #Query folder create your required Interface for your business entities such as,
+
+ITrainQueryRepository.cs.
+
+Now again move into the Infrastructure layer: and implements the remaining CommadRepository:
+
+CommadRepository.cs:
+
+using Metro.Application.Contracts.Repositories.Command.Base;
+using Metro.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+namespace Metro.Infrastructure.Repository.Command.Base
+{
+public class CommadRepository<TEntity> : IDisposable, ICommandRepository<TEntity> where TEntity : class
+{
+private readonly DbFactory \_dbFactory;
+private DbSet<TEntity> \_dbSet;
+
+        public CommadRepository(DbFactory dbFactory)
+        {
+            _dbFactory = dbFactory;
+        }
+
+        protected DbSet<TEntity> DbSet
+        {
+            get => _dbSet ??= _dbFactory.DbContext.Set<TEntity>();
+        }
+
+        public async Task DeleteAsync(TEntity entity)
+        {
+            if(entity == null)
+                throw new ArgumentNullException(nameof(entity));
+            DbSet.Remove(entity);
+            await Task.CompletedTask;
+        }
+
+        public async Task DeleteAsync(IEnumerable<TEntity> entity)
+        {
+           if(entity==null)
+                throw new ArgumentNullException(nameof(entity));
+           DbSet.RemoveRange(entity);
+           await Task.CompletedTask;
+        }
+
+        public async Task<TEntity> InsertAsync(TEntity entity)
+        {
+            if(entity == null)
+                throw new ArgumentNullException(nameof(entity));
+            await DbSet.AddAsync(entity);
+            return entity;
+
+        }
+
+        public async Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entity)
+        {
+            if(entity == null)
+                throw new ArgumentNullException(nameof(entity));
+            await DbSet.AddRangeAsync(entity);
+            return entity;
+        }
+        public async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            if(entity == null)
+                throw new ArgumentNullException(nameof(entity));
+            DbSet.Update(entity);
+            await Task.CompletedTask;
+            return entity;
+        }
+
+        public async Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+            DbSet.UpdateRange(entity);
+            await Task.CompletedTask;
+            return entity;
+        }
+
+        public async Task<TEntity> DeleteAsync(object id)
+        {
+            if(id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            var data = await DbSet.FindAsync(id);
+            if(data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+            DbSet.Remove(data);
+            await Task.CompletedTask;
+            return data;
+        }
+
+        public void Dispose()
+        {
+            _dbFactory.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public async Task<TEntity> GetAsync(object id)
+        {
+            return await DbSet.FindAsync(id);
+        }
+        public async Task<IEnumerable<TEntity>> FindAsync<T>(Expression<Func<TEntity, bool>> predicate) where T : class
+        {
+            return await DbSet.Where(predicate).ToListAsync();
+        }
+
+    }
+
+}
+
+Next into the #Command folder create our required CommandRepository classes based on our business entities.
+For our cases we are createing,
+
+TrainCommandRepository.cs:
+
+using Metro.Application.Contracts.Repositories.Command;
+using Metro.Core.Entities.metro;
+using Metro.Infrastructure.Persistence;
+using Metro.Infrastructure.Repository.Command.Base;
+
+namespace Metro.Infrastructure.Repository.Command;
+
+public class TrainCommandRepository : CommadRepository<Train>, ITrainCommandRepository
+{
+public TrainCommandRepository(DbFactory dbFactory) : base(dbFactory)
+{
+}
 }
 
 #### Step - 7:

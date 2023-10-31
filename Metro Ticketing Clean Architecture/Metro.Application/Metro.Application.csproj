@@ -26,7 +26,6 @@
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
     <Folder Include="Common\" />
-    <Folder Include="Contracts\" />
     <Folder Include="Queries\" />
   </ItemGroup>
 

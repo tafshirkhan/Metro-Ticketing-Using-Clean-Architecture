@@ -337,7 +337,7 @@ Under #Repository folder create two new folder as #Command & #Query.
 Under #Command folder create an another folder as #Base.
 Under #Base folder create a class as:
 
-CommadRepository.cs:
+**CommadRepository.cs:**
 
 <!-- Before implementing this CommadRepository.cs class let's first do some works into #Metro.Application layer -->
 
@@ -345,11 +345,11 @@ Into the #Contracts folder of #Metro.Application layer create a new folder as #R
 Under Repositories create two new folders as #Command & #Query.
 Under #Command create a another folder as #Base and under Base create a new interface as,
 
-ICommandRepository.cs:
+**ICommandRepository.cs:**
 
 Next under #Command folder create your required Interface for your business entities such as,
 
-ITrainCommandRepository.cs:
+**ITrainCommandRepository.cs:**
 
 <!-- using Metro.Application.Contracts.Repositories.Command.Base;
 using Metro.Core.Entities.metro;
@@ -365,21 +365,22 @@ Also do the same things into #Query folder.
 Under #Query folder create a new folde as #Base.
 Under Base create a new Interface as.
 
-IQueryRepository.cs:
+**IQueryRepository.cs:**
 
 AND
 
-IMultipleResultQueryRepository.cs:
+**IMultipleResultQueryRepository.cs:**
 
 Next under #Query folder create your required Interface for your business entities such as,
 
-ITrainQueryRepository.cs.
+**ITrainQueryRepository.cs.**
 
 Next under #Repositories folder create an Interface as,
 
-IUnitOfWorks.cs:
 
 <!-- namespace Metro.Application.Contracts.Repositories
+**IUnitOfWorks.cs:
+**
 {
 public interface IUnitOfWork
 {
@@ -389,7 +390,7 @@ Task<int> CommitAsync();
 
 And unser #Contracts folder create an Interface as,
 
-ICurrentUserService.cs:
+**ICurrentUserService.cs:**
 
 <!-- namespace Metro.Application.Contracts
 {
@@ -404,7 +405,7 @@ string Token { get; }
 
 <!-- Now again move into the Infrastructure layer: and implements the remaining CommadRepository: -->
 
-CommadRepository.cs:
+**CommadRepository.cs:**
 
 <!-- using Metro.Application.Contracts.Repositories.Command.Base;
 using Metro.Infrastructure.Persistence;
@@ -516,7 +517,7 @@ private DbSet<TEntity> \_dbSet;
 Next into the #Command folder create our required CommandRepository classes based on our business entities.
 For our cases we are createing,
 
-TrainCommandRepository.cs:
+**TrainCommandRepository.cs:**
 
 <!-- using Metro.Application.Contracts.Repositories.Command;
 using Metro.Core.Entities.metro;
@@ -534,11 +535,11 @@ public TrainCommandRepository(DbFactory dbFactory) : base(dbFactory)
 
 Next step create a folder as #Base under #Query folder and create two classes as,
 
-QueryRepository.cs AND MultipleResultQueryRepository.cs
+**QueryRepository.cs** AND **MultipleResultQueryRepository.cs**
 
 Next step under #Repository folder create a class as,
 
-UnitOfWork.cs:
+**UnitOfWork.cs:**
 
 <!-- using Metro.Application.Contracts;
 using Metro.Application.Contracts.Repositories;
@@ -613,7 +614,7 @@ private readonly ICurrentUserService \_currentUserService;
 Next step under #Infrastructure layer create a class as,
 DependencyInjection.cs where we will inject our services.
 
-DependencyInjection.cs:
+**DependencyInjection.cs:**
 
 <!-- using Metro.Application.Contracts.Repositories;
 using Metro.Application.Contracts.Repositories.Command.Base;

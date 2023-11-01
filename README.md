@@ -182,22 +182,23 @@ Under #Configs create two classes as:
 
 **#ConnectionString.cs:**
 
-namespace Metro.Infrastructure.Configs
+<!-- namespace Metro.Infrastructure.Configs
 {
 public class ConnectionString
 {
 public string MetroDbConnection { get; set; }
 }
-}
+} -->
+
 AND
 
 **#MetroSettings.cs:**
 
-namespace Metro.Infrastructure.Configs;
+<!-- namespace Metro.Infrastructure.Configs;
 public class MetroSettings
 {
 public ConnectionString? ConnectionString { get; set; }
-}
+} -->
 
 Next under Infrastructure layer create a new folder as #Persistence:
 Next Persistence folder create a another folder as #EfConfiguration:
@@ -205,7 +206,7 @@ Under EfConfiguration create a class as
 
 **BaseTypeConfiguration.cs:**
 
-using Metro.Core.Entities.Base;
+<!-- using Metro.Core.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -222,13 +223,13 @@ builder.Property(x => x.CreatedBy).HasMaxLength(100);
 builder.Property(x => x.LastModifiedBy).HasMaxLength(100);
 }
 }
-}
+} -->
 
 Next step under Persistence folder create a new class as,
 
 **DbConnector.cs:**
 
-using Metro.Infrastructure.Configs;
+<!-- using Metro.Infrastructure.Configs;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -253,13 +254,13 @@ protected DbConnector(IConfiguration configuration, IOptions<MetroSettings> sett
                         }
         }
 
-}
+} -->
 
 Next step under Persistence folder create a new class as,
 
 **MetroDbContext.cs:**
 
-using metros = Metro.Core.Entities.metro;
+<!-- using metros = Metro.Core.Entities.metro;
 using Microsoft.EntityFrameworkCore;
 using Metro.Core.Entities.metro;
 using System.Reflection;
@@ -298,13 +299,13 @@ public MetroDbContext(DbContextOptions<MetroDbContext> options) : base(options)
                 }
             }
 
-        }
+        } -->
 
 Next step under Persistence folder create a new class as,
 
 **DbFactory.cs:**
 
-using Microsoft.EntityFrameworkCore;
+<!-- using Microsoft.EntityFrameworkCore;
 
 namespace Metro.Infrastructure.Persistence
 {
@@ -328,7 +329,8 @@ private DbContext \_dbContext;
         }
     }
 
-}
+} -->
+
 Next step under Infrastructure layer create a new folder as #Repository;
 Under #Repository folder create two new folder as #Command & #Query.
 
@@ -349,7 +351,7 @@ Next under #Command folder create your required Interface for your business enti
 
 ITrainCommandRepository.cs:
 
-using Metro.Application.Contracts.Repositories.Command.Base;
+<!-- using Metro.Application.Contracts.Repositories.Command.Base;
 using Metro.Core.Entities.metro;
 
 namespace Metro.Application.Contracts.Repositories.Command
@@ -357,7 +359,7 @@ namespace Metro.Application.Contracts.Repositories.Command
 public interface ITrainCommandRepository : ICommandRepository<Train>
 {
 }
-}
+} -->
 
 Also do the same things into #Query folder.
 Under #Query folder create a new folde as #Base.
@@ -377,19 +379,19 @@ Next under #Repositories folder create an Interface as,
 
 IUnitOfWorks.cs:
 
-namespace Metro.Application.Contracts.Repositories
+<!-- namespace Metro.Application.Contracts.Repositories
 {
 public interface IUnitOfWork
 {
 Task<int> CommitAsync();
 }
-}
+} -->
 
 And unser #Contracts folder create an Interface as,
 
 ICurrentUserService.cs:
 
-namespace Metro.Application.Contracts
+<!-- namespace Metro.Application.Contracts
 {
 public interface ICurrentUserService
 {
@@ -398,13 +400,13 @@ Guid? UserId { get; }
 string Role { get; }
 string Token { get; }
 }
-}
+} -->
 
 <!-- Now again move into the Infrastructure layer: and implements the remaining CommadRepository: -->
 
 CommadRepository.cs:
 
-using Metro.Application.Contracts.Repositories.Command.Base;
+<!-- using Metro.Application.Contracts.Repositories.Command.Base;
 using Metro.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -509,14 +511,14 @@ private DbSet<TEntity> \_dbSet;
 
     }
 
-}
+} -->
 
 Next into the #Command folder create our required CommandRepository classes based on our business entities.
 For our cases we are createing,
 
 TrainCommandRepository.cs:
 
-using Metro.Application.Contracts.Repositories.Command;
+<!-- using Metro.Application.Contracts.Repositories.Command;
 using Metro.Core.Entities.metro;
 using Metro.Infrastructure.Persistence;
 using Metro.Infrastructure.Repository.Command.Base;
@@ -528,7 +530,7 @@ public class TrainCommandRepository : CommadRepository<Train>, ITrainCommandRepo
 public TrainCommandRepository(DbFactory dbFactory) : base(dbFactory)
 {
 }
-}
+} -->
 
 Next step create a folder as #Base under #Query folder and create two classes as,
 
@@ -538,7 +540,7 @@ Next step under #Repository folder create a class as,
 
 UnitOfWork.cs:
 
-using Metro.Application.Contracts;
+<!-- using Metro.Application.Contracts;
 using Metro.Application.Contracts.Repositories;
 using Metro.Core.Entities.Base;
 using Metro.Infrastructure.Persistence;
@@ -606,14 +608,14 @@ private readonly ICurrentUserService \_currentUserService;
         }
     }
 
-}
+} -->
 
 Next step under #Infrastructure layer create a class as,
 DependencyInjection.cs where we will inject our services.
 
 DependencyInjection.cs:
 
-using Metro.Application.Contracts.Repositories;
+<!-- using Metro.Application.Contracts.Repositories;
 using Metro.Application.Contracts.Repositories.Command.Base;
 using Metro.Application.Contracts.Repositories.Query.Base;
 using Metro.Infrastructure.Configs;
@@ -665,7 +667,7 @@ var opt = serviceProvider.GetRequiredService<IOptions<MetroSettings>>().Value;
         }
     }
 
-}
+} -->
 
 ---
 

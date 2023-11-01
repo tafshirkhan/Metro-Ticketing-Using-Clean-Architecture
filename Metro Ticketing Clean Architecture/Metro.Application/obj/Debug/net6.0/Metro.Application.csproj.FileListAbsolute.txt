@@ -10,3 +10,8 @@ E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architec
 E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\obj\Debug\net6.0\refint\Metro.Application.dll
 E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\obj\Debug\net6.0\Metro.Application.pdb
 E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\obj\Debug\net6.0\ref\Metro.Application.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\bin\Debug\net6.0\Metro.Core.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\bin\Debug\net6.0\Shared.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\bin\Debug\net6.0\Metro.Core.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\bin\Debug\net6.0\Shared.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Application\obj\Debug\net6.0\Metro.Application.csproj.CopyComplete

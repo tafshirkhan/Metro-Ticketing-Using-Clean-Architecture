@@ -1,0 +1,12 @@
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\bin\Debug\net6.0\Shared.deps.json
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\bin\Debug\net6.0\Shared.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\bin\Debug\net6.0\Shared.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.csproj.AssemblyReference.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.AssemblyInfoInputs.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.AssemblyInfo.cs
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.csproj.CoreCompileInputs.cache
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\refint\Shared.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\Shared.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Shared\obj\Debug\net6.0\ref\Shared.dll

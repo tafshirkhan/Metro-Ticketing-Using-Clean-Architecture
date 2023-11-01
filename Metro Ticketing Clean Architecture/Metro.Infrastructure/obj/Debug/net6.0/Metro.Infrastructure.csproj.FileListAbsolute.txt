@@ -10,3 +10,12 @@ E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architec
 E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\refint\Metro.Infrastructure.dll
 E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.pdb
 E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\ref\Metro.Infrastructure.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Infrastructure.runtimeconfig.json
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Application.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Core.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Shared.dll
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Application.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Metro.Core.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\bin\Debug\net6.0\Shared.pdb
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.csproj.CopyComplete
+E:\Metro Ticketing Using Clean Architecture\Metro-Ticketing-Using-Clean-Architecture\Metro Ticketing Clean Architecture\Metro.Infrastructure\obj\Debug\net6.0\Metro.Infrastructure.genruntimeconfig.cache

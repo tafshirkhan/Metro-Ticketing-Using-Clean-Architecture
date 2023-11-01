@@ -337,73 +337,13 @@ Under #Base folder create a class as:
 
 CommadRepository.cs:
 
-Before implementing this CommadRepository.cs class let's first do some works into #Metro.Application layer
+<!-- Before implementing this CommadRepository.cs class let's first do some works into #Metro.Application layer -->
 
 Into the #Contracts folder of #Metro.Application layer create a new folder as #Repositories.
 Under Repositories create two new folders as #Command & #Query.
-Under #Command create a another folder as #Base and Base create a new interface as,
+Under #Command create a another folder as #Base and under Base create a new interface as,
 
 ICommandRepository.cs:
-
-using System.Linq.Expressions;
-
-namespace Metro.Application.Contracts.Repositories.Command.Base
-{
-public interface ICommandRepository<TEntity> where TEntity : class
-{
-/// <summary>
-/// Insert data using EF
-/// </summary>
-/// <param name="entity"></param>
-/// <returns></returns>
-Task<TEntity> InsertAsync(TEntity entity);
-/// <summary>
-/// Insert multiple data using EF
-/// </summary>
-/// <param name="entity"></param>
-/// <returns></returns>
-Task<IEnumerable<TEntity>> InsertAsync(IEnumerable<TEntity> entity);
-/// <summary>
-/// Update data using EF
-/// </summary>
-/// <param name="entity"></param>
-/// <returns></returns>
-Task<TEntity> UpdateAsync(TEntity entity);
-/// <summary>
-/// Update Multiple data using EF
-/// </summary>
-/// <param name="entity"></param>
-/// <returns></returns>
-Task<IEnumerable<TEntity>> UpdateAsync(IEnumerable<TEntity> entity);
-/// <summary>
-/// Delete data using EF
-/// </summary>
-/// <param name="entity"></param>
-/// <returns></returns>
-Task DeleteAsync(TEntity entity);
-/// <summary>
-/// Delete multiple data using EF
-/// </summary>
-/// <param name="entity"></param>
-/// <returns></returns>
-Task DeleteAsync(IEnumerable<TEntity> entity);
-
-        Task<TEntity> DeleteAsync(object id);
-        /// <summary>
-        /// Get data using EF
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        Task<TEntity> GetAsync(object id);
-        // <summary>
-        /// Get data using EF
-        /// </summary>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        Task<IEnumerable<TEntity>> FindAsync<T>(Expression<Func<TEntity, bool>> predicate) where T : class;
-    }
-
-}
 
 Next under #Command folder create your required Interface for your business entities such as,
 
@@ -433,7 +373,34 @@ Next under #Query folder create your required Interface for your business entiti
 
 ITrainQueryRepository.cs.
 
-Now again move into the Infrastructure layer: and implements the remaining CommadRepository:
+Next under #Repositories folder create an Interface as,
+
+IUnitOfWorks.cs:
+
+namespace Metro.Application.Contracts.Repositories
+{
+public interface IUnitOfWork
+{
+Task<int> CommitAsync();
+}
+}
+
+And unser #Contracts folder create an Interface as,
+
+ICurrentUserService.cs:
+
+namespace Metro.Application.Contracts
+{
+public interface ICurrentUserService
+{
+string ClientId { get; }
+Guid? UserId { get; }
+string Role { get; }
+string Token { get; }
+}
+}
+
+<!-- Now again move into the Infrastructure layer: and implements the remaining CommadRepository: -->
 
 CommadRepository.cs:
 
@@ -563,7 +530,155 @@ public TrainCommandRepository(DbFactory dbFactory) : base(dbFactory)
 }
 }
 
+Next step create a folder as #Base under #Query folder and create two classes as,
+
+QueryRepository.cs AND MultipleResultQueryRepository.cs
+
+Next step under #Repository folder create a class as,
+
+UnitOfWork.cs:
+
+using Metro.Application.Contracts;
+using Metro.Application.Contracts.Repositories;
+using Metro.Core.Entities.Base;
+using Metro.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
+namespace Metro.Infrastructure.Repository
+{
+public class UnitOfWork : IUnitOfWork, IDisposable
+{
+private readonly DbFactory \_dbFactory;
+private readonly ICurrentUserService \_currentUserService;
+
+        public UnitOfWork(DbFactory dbFactory, ICurrentUserService currentUserService)
+        {
+            _dbFactory = dbFactory;
+            _currentUserService = currentUserService;
+        }
+
+        public async Task<int> CommitAsync()
+        {
+            await using var transaction = await _dbFactory.DbContext.Database.BeginTransactionAsync();
+            try
+            {
+                foreach(var entry in _dbFactory.DbContext.ChangeTracker.Entries<BaseEntity<Guid>>())
+                {
+                    switch (entry.State)
+                    {
+                        case EntityState.Added:
+                            {
+
+                                entry.Entity.CreatedBy = _currentUserService.UserId ?? Guid.NewGuid();
+                                entry.Entity.CreatedDate = DateTime.Now;
+                                break;
+                            }
+                        case EntityState.Modified:
+                            {
+                                entry.Entity.LastModifiedBy = _currentUserService.UserId;
+                                entry.Entity.LastModifiedDate = DateTime.Now;
+                                break;
+                            }
+                        case EntityState.Deleted:
+                            break;
+                    }
+                }
+                var affectedRows = await _dbFactory.DbContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return affectedRows;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+            finally
+            {
+                await _dbFactory.DbContext.Database.CloseConnectionAsync();
+                await _dbFactory.DbContext.DisposeAsync();
+            }
+        }
+
+        public void Dispose()
+        {
+            _dbFactory?.Dispose();
+            GC.SuppressFinalize(this);
+        }
+    }
+
+}
+
+Next step under #Infrastructure layer create a class as,
+DependencyInjection.cs where we will inject our services.
+
+DependencyInjection.cs:
+
+using Metro.Application.Contracts.Repositories;
+using Metro.Application.Contracts.Repositories.Command.Base;
+using Metro.Application.Contracts.Repositories.Query.Base;
+using Metro.Infrastructure.Configs;
+using Metro.Infrastructure.Persistence;
+using Metro.Infrastructure.Repository;
+using Metro.Infrastructure.Repository.Command.Base;
+using Metro.Infrastructure.Repository.Query.Base;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Metro.Infrastructure
+{
+public static class DependencyInjection
+{
+public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+{
+services.Configure<MetroSettings>(configuration);
+var serviceProvider = services.BuildServiceProvider();
+var opt = serviceProvider.GetRequiredService<IOptions<MetroSettings>>().Value;
+
+            //For SQLServer Connection
+            services.AddDbContext<MetroDbContext>(options =>
+            {
+                options.UseSqlServer(opt.ConnectionString.MetroDbConnection, sqlServerOptionsAction: sqlOptions =>
+                {
+
+                });
+            });
+            services.AddScoped(typeof(IQueryRepository<>), typeof(QueryRepository<>));
+            services.AddScoped(typeof(IMultipleResultQueryRepository<>), typeof(MultipleResultQueryRepository<>));
+            services.AddScoped(typeof(ICommandRepository<>), typeof(CommadRepository<>));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<Func<MetroDbContext>>((provider) => provider.GetService<MetroDbContext>);
+            services.AddScoped<DbFactory>();
+            services.AddRepositories();
+            return services;
+        }
+
+        private static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            return services;
+        }
+    }
+
+}
+
+---
+
 #### Step - 7:
+
+---
+
+Now it's time to work with our database.
+Now we need to add migrations snd to that we have to configure few things:
+
+---
+
+#### Step - 8:
 
 ---
 

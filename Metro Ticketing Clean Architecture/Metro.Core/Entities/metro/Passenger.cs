@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Metro.Core.Entities.metro
 {
-    [Table("Passenger", Schema = "metro")]
+   
     public class Passenger : BaseEntity<Guid>
     {
         [Required]

@@ -10,7 +10,6 @@ using Metro.Core.Entities.Base;
 
 namespace Metro.Core.Entities.metro
 {
-    [Table("Train", Schema = "metro")]
     public class Train : BaseEntity<Guid>
     {
         [Required]

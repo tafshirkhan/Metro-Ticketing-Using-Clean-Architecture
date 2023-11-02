@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KGryKQBLmxd8KRME1on95Qqtf0MMSP6CSsiX7nL+qF22j1QH5YV77nN/iciXRBQ1IlKIydC0FRv0RacTCEdxwQ==",
+  "dgSpecHash": "a0WCxYPpmFIjQYV0/RR6owckB3bqdAqShWzGD27qq5j+wSoJD8XUZ5n3gGrn3MYx6Z/RYAlqFuAUl42Sk0/Skw==",
   "success": true,
   "projectFilePath": "E:\\Metro Ticketing Using Clean Architecture\\Metro-Ticketing-Using-Clean-Architecture\\Metro Ticketing Clean Architecture\\Metro.API\\Metro.API.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.0\\microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
     "C:\\Users\\Tafsir\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",

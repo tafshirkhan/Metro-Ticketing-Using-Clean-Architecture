@@ -1,4 +1,5 @@
-﻿using Metro.Application.Contracts.Repositories;
+﻿using Metro.Application.Contracts;
+using Metro.Application.Contracts.Repositories;
 using Metro.Application.Contracts.Repositories.Command.Base;
 using Metro.Application.Contracts.Repositories.Query.Base;
 using Metro.Infrastructure.Configs;
@@ -29,8 +30,12 @@ namespace Metro.Infrastructure
             //For SQLServer Connection
             services.AddDbContext<MetroDbContext>(options =>
             {
-                options.UseSqlServer(opt.ConnectionString.MetroDbConnection, sqlServerOptionsAction: sqlOptions =>
-                { 
+                //options.UseSqlServer(opt.ConnectionString.MetroDbConnection, sqlServerOptionsAction: sqlOptions =>
+                //{ 
+
+                //});
+                options.UseSqlServer(configuration.GetConnectionString("MetroDbConnection"), sqlServerOptionsAction: sqlOptions =>
+                {
 
                 });
             });
@@ -38,6 +43,7 @@ namespace Metro.Infrastructure
             services.AddScoped(typeof(IMultipleResultQueryRepository<>), typeof(MultipleResultQueryRepository<>));
             services.AddScoped(typeof(ICommandRepository<>), typeof(CommadRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<Func<MetroDbContext>>((provider) => provider.GetService<MetroDbContext>);
             services.AddScoped<DbFactory>();
             services.AddRepositories();

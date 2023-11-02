@@ -2,9 +2,9 @@
 {
     public interface ICurrentUserService
     {
-        string ClientId { get; }
+        //string ClientId { get; }
         Guid? UserId { get; }
-        string Role { get; }
-        string Token { get; }
+        //string Role { get; }
+        //string Token { get; }
     }
 }

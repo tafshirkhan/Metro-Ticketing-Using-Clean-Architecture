@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Metro.Core.Entities.metro;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace Metro.Infrastructure.Persistence
 {
@@ -11,6 +12,10 @@ namespace Metro.Infrastructure.Persistence
         {
 
         }
+        //public MetroDbContext(DbContextOptions<MetroDbContext> options, IConfiguration configuration) : base(options)
+        //{
+        //    // Use the configuration parameter to access different connection strings based on the environment.
+        //}
         //tables
         public DbSet<metros.Train> Trains { get; set; } = null;
         public DbSet<metros.Ticket> Tickets { get; set; } = null;

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Metro.Core.Entities.metro
 {
-    [Table("User", Schema = "metro")]
     public class User : BaseEntity<Guid>
     {
         [Required]

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Metro.Core.Entities.metro
 {
-    [Table("Transaction", Schema = "metro")]
+   
     public class Transaction : BaseEntity<Guid>
     {
         [ForeignKey("BookingId")]

@@ -377,7 +377,6 @@ Next under #Query folder create your required Interface for your business entiti
 
 Next under #Repositories folder create an Interface as,
 
-
 <!-- namespace Metro.Application.Contracts.Repositories
 **IUnitOfWorks.cs:
 **
@@ -677,7 +676,15 @@ var opt = serviceProvider.GetRequiredService<IOptions<MetroSettings>>().Value;
 ---
 
 Now it's time to work with our database.
-Now we need to add migrations snd to that we have to configure few things:
+Now we need to add migrations and to do that we have to configure few things:
+
+Go to appsettings.json file of Metro.API project and initiliaze the connection string,
+
+appsettings.json:
+
+<!-- "ConnectionStrings": {
+    "MetroDbConnection": "Server=DESKTOP-MQ97L1D\\MSSQLSERVER2022; Database=MetroDb; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=true;"
+  } -->
 
 ---
 
